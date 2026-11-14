@@ -1,0 +1,644 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Permanent+Marker&display=swap');
+
+:root {
+    --bg-color: #0e0e11;
+    --container-bg: #18181b;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.65);
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Background effects */
+.background-blur {
+    position: fixed;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-image: url('images/principal.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(80px) saturate(120%);
+    opacity: 0.35;
+    z-index: -2;
+    transform: scale(1.1);
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(14, 14, 17, 0.45), rgba(14, 14, 17, 0.95));
+    z-index: -1;
+}
+
+.container {
+    width: 100%;
+    max-width: 540px;
+    padding: 0;
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    background-color: var(--container-bg);
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 0;
+        border-radius: 0;
+        min-height: 100vh;
+    }
+}
+
+.content-wrapper {
+    padding: 0 24px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    animation: fadeUp 0.8s ease-out;
+}
+
+.hero-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background-color: var(--container-bg);
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
+/* Difuminado hacia el fondo gris carbón del contenedor, estilo Anna Malygon */
+.hero-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65%;
+    background: linear-gradient(
+        to top,
+        var(--container-bg) 0%,
+        rgba(24, 24, 27, 0.92) 35%,
+        rgba(24, 24, 27, 0.45) 70%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hero-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px 20px 20px;
+    text-align: center;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-size: 2.1rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.hero-handle {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+    transition: var(--transition-smooth);
+}
+
+.hero-handle:hover {
+    color: #ffffff;
+    opacity: 1;
+}
+
+.hero-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+}
+
+.verified-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.verified-badge svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+@media (max-width: 420px) {
+    .hero-text h1 {
+        font-size: 1.85rem;
+    }
+    .verified-badge svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 4px 0;
+    animation: fadeUp 0.8s ease-out 0.15s both;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #ffffff;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.social-icon.instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+.social-icon.facebook {
+    background: #1877F2;
+}
+
+.social-icon.tiktok {
+    background: #000000;
+}
+
+.social-icon.x-twitter {
+    background: #000000;
+}
+
+.social-icon.email {
+    background: #4285F4;
+}
+
+.social-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .social-icon:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+}
+
+/* Characters Section */
+.characters {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: fadeUp 0.8s ease-out 0.3s both;
+}
+
+.characters h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-left: 0;
+}
+
+.character-list {
+    display: grid;
+    gap: 16px;
+}
+
+.character-card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9; /* Proporción uniforme para todas las tarjetas */
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: block;
+}
+
+.character-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 10%;
+    opacity: 1; /* Fotos nítidas sin oscurecimiento */
+    transition: var(--transition-smooth);
+}
+
+.character-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.character-card:hover .character-image {
+    transform: scale(1.03);
+}
+
+/* Brillo lento cada 2 segundos para Chayak */
+.chayak-image {
+    animation: chayakGlowPulse 2s infinite ease-in-out;
+}
+
+.chayak-shine {
+    position: absolute;
+    top: 0;
+    left: -130%;
+    width: 65%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 20%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0.05) 80%,
+        transparent 100%
+    );
+    transform: skewX(-24deg);
+    pointer-events: none;
+    z-index: 2;
+    animation: chayakShineSweep 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes chayakShineSweep {
+    0% {
+        left: -130%;
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.9;
+    }
+    65% {
+        left: 150%;
+        opacity: 0.9;
+    }
+    75%, 100% {
+        left: 150%;
+        opacity: 0;
+    }
+}
+
+@keyframes chayakGlowPulse {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    35% {
+        filter: brightness(1.18) contrast(1.05) drop-shadow(0 0 16px rgba(255, 235, 180, 0.35));
+    }
+    65% {
+        filter: brightness(1);
+    }
+}
+
+/* About Section */
+.about-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    animation: fadeUp 0.8s ease-out 0.2s both;
+    padding: 8px 8px 16px;
+}
+
+.about-section h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.about-section p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* Final Image */
+.final-image {
+    animation: fadeUp 0.8s ease-out 0.5s both;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    margin-top: 16px;
+}
+
+.final-image img {
+    width: 100%;
+    display: block;
+}
+
+/* Contact Section */
+.contact-section {
+    margin-top: 8px;
+    animation: fadeUp 0.8s ease-out 0.45s both;
+}
+
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    background: var(--text-primary);
+    color: var(--bg-color);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: var(--transition-smooth);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+        background: #f0f0f0;
+    }
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+    .chayak-shine {
+        display: none !important;
+    }
+    .background-blur {
+        transform: none;
+    }
+}
+
+/* ===== Character Page Styles ===== */
+
+/* Character-specific background blurs */
+.character-bg-chayak {
+    background-image: url('images/chayak.JPEG');
+}
+
+.character-bg-jorgecarlos {
+    background-image: url('images/jorgecarlos.JPG');
+}
+
+.character-bg-juancho {
+    background-image: url('images/image2.png');
+}
+
+/* Back button */
+.character-page-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding: 20px;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(-3px);
+}
+
+/* Character Hero */
+.character-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 500px;
+    overflow: hidden;
+}
+
+.character-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+}
+
+/* Sin difuminado negro en las fotos de personajes */
+.character-hero-gradient {
+    display: none;
+}
+
+.character-hero-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 32px 24px 24px;
+    text-align: center;
+}
+
+.character-name {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    line-height: 1.1;
+}
+
+/* Character accent colors */
+.character-name.chayak-accent {
+    font-family: 'Permanent Marker', cursive;
+    color: #FFEA00;
+    text-shadow:
+        -2px -2px 0 var(--container-bg),
+         2px -2px 0 var(--container-bg),
+        -2px  2px 0 var(--container-bg),
+         2px  2px 0 var(--container-bg),
+         0 4px 20px rgba(0, 0, 0, 0.8);
+    transform: rotate(-2deg);
+}
+
+.character-name.jorgecarlos-accent {
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(135deg, #64b4ff, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.character-name.juancho-accent {
+    font-family: 'Permanent Marker', cursive;
+    color: #50dc78;
+    text-shadow:
+        -2px -2px 0 #0d2818,
+         2px -2px 0 #0d2818,
+        -2px  2px 0 #0d2818,
+         2px  2px 0 #0d2818;
+    transform: rotate(2deg);
+}
+
+/* Character Content */
+.character-content {
+    padding: 8px 24px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.character-bio h2,
+.character-gallery h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+}
+
+.character-bio p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    aspect-ratio: 1;
+    opacity: 1;
+    transition: var(--transition-smooth);
+    border: 1px solid var(--card-border);
+}
+
+.gallery-grid img:first-child:last-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9;
+}
+
+.gallery-grid img:hover {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.character-back {
+    margin-top: 8px;
+}
+
+/* Ensure character-card as <a> tag retains proper styling */
+a.character-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
