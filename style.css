@@ -87,6 +87,7 @@ body {
 .hero {
     position: relative;
     width: 100%;
+    background-color: var(--container-bg);
     animation: fadeUp 0.8s ease-out;
 }
 
@@ -104,6 +105,9 @@ body {
     object-fit: cover;
     object-position: center top;
     display: block;
+    /* Fundir también la foto para evitar una costura al redondear píxeles en móvil. */
+    -webkit-mask-image: linear-gradient(to bottom, #000 75%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 75%, transparent 100%);
 }
 
 /* Difuminado hacia el fondo gris carbón del contenedor, estilo Anna Malygon */
@@ -116,6 +120,7 @@ body {
     background: linear-gradient(
         to top,
         var(--container-bg) 0%,
+        var(--container-bg) 12%,
         rgba(24, 24, 27, 0.92) 35%,
         rgba(24, 24, 27, 0.45) 70%,
         transparent 100%
@@ -307,12 +312,15 @@ body {
     transform: scale(1.03);
 }
 
-/* Brillo lento cada 2 segundos para Chayak */
-.chayak-image {
-    animation: chayakGlowPulse 2s infinite ease-in-out;
+/* Mismo brillo cada 2 segundos en las tarjetas y portadas de los personajes. */
+.character-image,
+.character-hero-image {
+    animation: characterGlowPulse 2s infinite ease-in-out;
 }
 
-.chayak-shine {
+.character-card::after,
+.character-hero::after {
+    content: '';
     position: absolute;
     top: 0;
     left: -130%;
@@ -329,10 +337,10 @@ body {
     transform: skewX(-24deg);
     pointer-events: none;
     z-index: 2;
-    animation: chayakShineSweep 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    animation: characterShineSweep 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes chayakShineSweep {
+@keyframes characterShineSweep {
     0% {
         left: -130%;
         opacity: 0;
@@ -350,7 +358,7 @@ body {
     }
 }
 
-@keyframes chayakGlowPulse {
+@keyframes characterGlowPulse {
     0%, 100% {
         filter: brightness(1);
     }
@@ -450,7 +458,14 @@ body {
         animation: none !important;
         transition: none !important;
     }
-    .chayak-shine {
+    .character-image,
+    .character-hero-image,
+    .character-card::after,
+    .character-hero::after {
+        animation: none !important;
+    }
+    .character-card::after,
+    .character-hero::after {
         display: none !important;
     }
     .background-blur {
