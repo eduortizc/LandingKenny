@@ -35,7 +35,7 @@ body {
     left: -10%;
     width: 120%;
     height: 120%;
-    background-image: url('images/principal.png');
+    background-image: url('images/optimized/kenny-bg.webp');
     background-size: cover;
     background-position: center;
     filter: blur(80px) saturate(120%);
@@ -405,6 +405,7 @@ body {
 
 .final-image img {
     width: 100%;
+    height: auto;
     display: block;
 }
 
@@ -477,15 +478,15 @@ body {
 
 /* Character-specific background blurs */
 .character-bg-chayak {
-    background-image: url('images/chayak.JPEG');
+    background-image: url('images/optimized/chayak-portrait-bg.webp');
 }
 
 .character-bg-jorgecarlos {
-    background-image: url('images/jorgecarlos.JPG');
+    background-image: url('images/optimized/jorgecarlos-portrait-bg.webp');
 }
 
 .character-bg-juancho {
-    background-image: url('images/image2.png');
+    background-image: url('images/optimized/juancho-portrait-bg.webp');
 }
 
 /* Back button */
