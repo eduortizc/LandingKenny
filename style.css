@@ -612,11 +612,17 @@ body {
     margin-bottom: 12px;
 }
 
-.character-bio p {
+.character-bio p,
+.character-bio ul {
     font-size: 1.1rem;
     line-height: 1.7;
     color: var(--text-secondary);
     font-weight: 300;
+}
+
+.character-bio ul {
+    margin-top: 12px;
+    padding-inline-start: 1.25em;
 }
 
 /* Gallery Grid */
