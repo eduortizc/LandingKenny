@@ -257,6 +257,151 @@ body {
     }
 }
 
+/* Music Release Section */
+.music-release {
+    animation: fadeUp 0.8s ease-out 0.25s both;
+    margin: 4px 0;
+}
+
+.music-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.music-card:hover {
+    border-color: rgba(30, 215, 96, 0.35);
+    box-shadow: 0 8px 30px rgba(30, 215, 96, 0.12);
+}
+
+.music-cover-wrapper {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background: #000;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.music-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.music-card:hover .music-cover {
+    transform: scale(1.02);
+}
+
+.music-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #1DB954;
+    color: #0b0b0f;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    border-radius: 100px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-transform: uppercase;
+    animation: pulseBadge 2.2s infinite ease-in-out;
+}
+
+@keyframes pulseBadge {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(29, 185, 84, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 4px 18px rgba(29, 185, 84, 0.7);
+    }
+}
+
+.music-details {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.music-meta {
+    text-align: center;
+}
+
+.music-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1DB954;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.music-title {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+}
+
+.music-artist {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 4px 0 0 0;
+    font-weight: 400;
+}
+
+.btn-spotify {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #1DB954;
+    color: #000000 !important;
+    text-decoration: none;
+    padding: 15px 24px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.2px;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 18px rgba(29, 185, 84, 0.35);
+}
+
+.btn-spotify:hover {
+    background: #1ed760;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(29, 185, 84, 0.55);
+}
+
+.btn-spotify:active {
+    transform: scale(0.98);
+}
+
+.spotify-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
 /* Characters Section */
 .characters {
     display: flex;
