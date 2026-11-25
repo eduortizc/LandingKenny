@@ -278,8 +278,8 @@ body {
 }
 
 .music-card:hover {
-    border-color: rgba(30, 215, 96, 0.35);
-    box-shadow: 0 8px 30px rgba(30, 215, 96, 0.12);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .music-cover-wrapper {
@@ -289,6 +289,8 @@ body {
     aspect-ratio: 1 / 1;
     background: #000;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    border: none;
+    outline: none;
 }
 
 .music-cover {
@@ -297,40 +299,12 @@ body {
     object-fit: cover;
     display: block;
     transition: transform 0.4s ease;
+    border: none;
+    outline: none;
 }
 
 .music-card:hover .music-cover {
     transform: scale(1.02);
-}
-
-.music-badge {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: #1DB954;
-    color: #0b0b0f;
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    padding: 6px 12px;
-    border-radius: 100px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    text-transform: uppercase;
-    animation: pulseBadge 2.2s infinite ease-in-out;
-}
-
-@keyframes pulseBadge {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 4px 12px rgba(29, 185, 84, 0.4);
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 4px 18px rgba(29, 185, 84, 0.7);
-    }
 }
 
 .music-details {
@@ -348,7 +322,7 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #1DB954;
+    color: var(--text-secondary);
     display: block;
     margin-bottom: 4px;
 }
@@ -369,37 +343,73 @@ body {
     font-weight: 400;
 }
 
-.btn-spotify {
+.music-platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.btn-music {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    background: #1DB954;
-    color: #000000 !important;
-    text-decoration: none;
-    padding: 15px 24px;
+    gap: 12px;
+    padding: 14px 20px;
     border-radius: 100px;
     font-weight: 700;
-    font-size: 1.05rem;
-    letter-spacing: 0.2px;
+    font-size: 1rem;
+    text-decoration: none;
     transition: var(--transition-smooth);
-    box-shadow: 0 4px 18px rgba(29, 185, 84, 0.35);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    letter-spacing: 0.2px;
+}
+
+.btn-music:hover {
+    transform: translateY(-2px);
+}
+
+.btn-music:active {
+    transform: scale(0.98);
+}
+
+.music-platform-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Spotify */
+.btn-spotify {
+    background: #1DB954;
+    color: #000000 !important;
 }
 
 .btn-spotify:hover {
     background: #1ed760;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(29, 185, 84, 0.55);
+    box-shadow: 0 6px 20px rgba(29, 185, 84, 0.4);
 }
 
-.btn-spotify:active {
-    transform: scale(0.98);
+/* YouTube */
+.btn-youtube {
+    background: #FF0000;
+    color: #ffffff !important;
 }
 
-.spotify-icon {
-    width: 22px;
-    height: 22px;
-    flex-shrink: 0;
+.btn-youtube:hover {
+    background: #ff1a1a;
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+}
+
+/* Apple Music */
+.btn-applemusic {
+    background: #FC3C44;
+    color: #ffffff !important;
+}
+
+.btn-applemusic:hover {
+    background: #e02830;
+    box-shadow: 0 6px 20px rgba(252, 60, 68, 0.4);
 }
 
 /* Characters Section */
